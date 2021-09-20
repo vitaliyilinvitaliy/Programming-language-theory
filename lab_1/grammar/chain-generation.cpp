@@ -33,18 +33,19 @@ void Grammar::generate_chain(string chain)
         }
     }
    
-    if(count_NT_symbol == 0)
-    {
-        Chains.insert(chain);
-    }
-
-    if(count_VT_symbol > Range.second)
+    if(count_VT_symbol > Range.second || (count_VT_symbol < Range.first && count_NT_symbol == 0))
     {
         return;
     }
+ 
+    if(count_NT_symbol == 0)
+    {
+        Chains.insert(chain);
+        return;
+    }   
     
     string begin_chain;
-
+   
     for(int i = 0; i < chain.size(); i++)
     {
         if(P.find(chain[i]) != P.end())

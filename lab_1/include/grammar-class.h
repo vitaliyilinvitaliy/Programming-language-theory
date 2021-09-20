@@ -32,4 +32,3 @@ class Grammar{
 };
 
 #endif //_GRAMMAR_CLASS_H_
-

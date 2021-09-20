@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <iostream>
+#include <iterator>
 #include <string>
 
 int Grammar::push_term_symb(char symbol)
@@ -9,6 +10,12 @@ int Grammar::push_term_symb(char symbol)
     if(VT.find(symbol) != VT.end())
     {
         std::cout <<"push_term_symb: Such a TERMINAL symbol already exists!" << std::endl;
+        return 1;
+    }
+
+    if(NT.find(symbol) != NT.end())
+    {
+        std::cout <<"push_term_symb: Such a NON-TERMINAL symbol already exists!" << std::endl;
         return 1;
     }
 
@@ -25,6 +32,12 @@ int Grammar::push_no_term_symb(char symbol)
         std::cout <<"push_no_term_symb: Such a NON-TERMINAL symbol already exists!" << std::endl;
         return 1;
     }
+     
+    if(VT.find(symbol) != VT.end())
+    {
+        std::cout <<"push_no_term_symb: Such a TERMINAL symbol already exists!" << std::endl;
+        return 1;
+    }
 
     NT.insert(symbol);
 
@@ -39,19 +52,19 @@ int Grammar::push_rule(char vn_symbol, std::vector<std::string> rule_vect)
     if(NT.size() == 0)
     {
         std::cout <<"push_rule: There are NON-TERMINAL symbols!" << std::endl;
-        return -1;
+        return 1;
     }
 
     if(NT.find(vn_symbol) == NT.end())
     {
         std::cout <<"push_rule: There is NO such nonterminal!" << std::endl;
-        return -2;
+        return 2;
     }
 
     if(P.size() == NT.size())
     {
         std::cout <<"push_rule: The number of RULES should not exceed the number of NON-TERMINAL characters!" << std::endl;
-        return -3;
+        return 3;
     }
 
     for(auto it : rule_vect)
@@ -61,7 +74,7 @@ int Grammar::push_rule(char vn_symbol, std::vector<std::string> rule_vect)
             if(VT.find(it[i]) == VT.end() &&  NT.find(it[i]) == NT.end() && it[i] != '^')
             {
                 std::cout << it << ": " << it[i] << " - not found!" << std::endl;
-                return -5;
+                return 4;
             }
         }
     }
@@ -77,7 +90,7 @@ int Grammar::set_start_symbol(char symbol)
     if(NT.find(symbol) == NT.end())
     {
         std::cout <<"set_start_symbol: You cannot start with this symbol! Symbol not found!" << std::endl;
-        return -1;
+        return 1;
     }
     
     S = symbol;
