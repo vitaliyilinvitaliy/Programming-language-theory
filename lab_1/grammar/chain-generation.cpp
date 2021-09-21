@@ -45,7 +45,7 @@ void Grammar::generate_chain(string chain)
     }   
     
     string begin_chain;
-   
+       
     for(int i = 0; i < chain.size(); i++)
     {
         if(P.find(chain[i]) != P.end())

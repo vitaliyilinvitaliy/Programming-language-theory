@@ -11,6 +11,7 @@ void input_grammar(void)
     unsigned int size_NT = 0;
     char symbol = 0;
     char target = 0;
+    char direction = 0;
     unsigned int x = 0;
     unsigned int y = 0;
     
@@ -73,6 +74,12 @@ void input_grammar(void)
         cout << endl;
     }while(mygram.set_start_symbol(target) != 0);
    
+    do{
+        cout << "Input direction: ";
+        cin >> direction;
+        cout << endl; 
+    }while(mygram.set_direction(direction));
+    
     cout << endl << endl << "Input right border: ";
     cin >> x;
     cout << endl << "Input left border: ";

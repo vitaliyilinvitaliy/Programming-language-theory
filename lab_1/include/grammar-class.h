@@ -18,7 +18,7 @@ class Grammar{
 
         std::set<std::string> Chains;                   //set всех цепочек 
         void generate_chain(std::string);               //Функция генерации цепочек
-    
+        char direction;    
 
     public:
         int push_term_symb(char symbol);                                    //Метод для добавления терминального символа
@@ -27,6 +27,7 @@ class Grammar{
         int set_start_symbol(char symbol);                                  //Метод для задания целевого символа
         int print_grammar(void);                                            //Метод для вывода грамматики на экран  
         int set_range(unsigned int x, unsigned int y);                      //Метод для задания диапазона длин цепочек
+        int set_direction(char lr);
 
         void generate(void);                                                //Метод генерации цепочек
 };

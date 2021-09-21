@@ -175,5 +175,17 @@ int Grammar::set_range(unsigned int x, unsigned int y)
     return 0;
 }
 
-
+int Grammar::set_direction(char lr)
+{
+    if(lr == 'l' || lr == 'r')
+    {
+        direction = lr;
+    }
+    else 
+    {
+        std::cout << "Direction - " << lr << " not found!" << std::endl;
+        return 1;
+    }
+    return 0;
+}
 
