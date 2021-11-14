@@ -5,11 +5,13 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 void Grammar::generate_chain(string chain)
 {
+    cout << chain << endl;
     unsigned int count_VT_symbol = 0;
     unsigned int count_NT_symbol = 0;
     
@@ -32,40 +34,45 @@ void Grammar::generate_chain(string chain)
             count_NT_symbol++;
         }
     }
-   
+    
+
+
     if(count_VT_symbol > Range.second || (count_VT_symbol < Range.first && count_NT_symbol == 0))
     {
+        cout << endl;
         return;
     }
  
     if(count_NT_symbol == 0)
     {
+        //cout << chain << endl;
+        //if(direction == 'l') reverse(chain.begin(), chain.end());
         Chains.insert(chain);
         return;
     }   
     
     string begin_chain;
-       
-    for(int i = 0; i < chain.size(); i++)
-    {
-        if(P.find(chain[i]) != P.end())
+     
+        for(int i = 0; i < chain.size(); i++)
         {
-            for(int j = 0; j < P[chain[i]].size(); j++)
-            { 
-                string new_chain = begin_chain;  
-                new_chain += P[chain[i]][j];
-                for(int k = i + 1; k < chain.size(); k++)
-                {
-                     new_chain += chain[k];
-                }
-                generate_chain(new_chain);               
-            }        
-        }
-        else
-        {
-            begin_chain += chain[i];
-        }
-    }
+            if(P.find(chain[i]) != P.end())
+            {
+                for(int j = 0; j < P[chain[i]].size(); j++)
+                { 
+                    string new_chain = begin_chain;  
+                    new_chain += P[chain[i]][j];
+                    for(int k = i + 1; k < chain.size(); k++)
+                    {
+                        new_chain += chain[k];
+                    }
+                    generate_chain(new_chain);               
+                }        
+            }
+            else
+            {
+                begin_chain += chain[i];
+            }
+        } 
 }
 
 
@@ -76,8 +83,8 @@ void Grammar::generate(void)
     
     generate_chain(S_str);
 
-    for(auto it : Chains)
+    /*for(auto it : Chains)
     {
         cout << it << endl;
-    }
+    }*/
 }

@@ -162,7 +162,7 @@ int Grammar::print_grammar(void)
     }
 
     std::cout << "\n\t" << Range.first << " - " << Range.second << std::endl;
-
+    std::cout << "lr - " << direction << std::endl;
     return 0;
 }
 

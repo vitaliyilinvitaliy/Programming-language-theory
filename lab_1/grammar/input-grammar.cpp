@@ -7,7 +7,7 @@ using namespace std;
 
 void input_grammar(void)
 {
-    unsigned int size_VT = 0;
+/*    unsigned int size_VT = 0;
     unsigned int size_NT = 0;
     char symbol = 0;
     char target = 0;
@@ -87,7 +87,11 @@ void input_grammar(void)
     cout << endl;
 
     mygram.set_range(x, y);
-/*
+    */
+      
+      
+      Grammar mygram;
+
       mygram.push_term_symb('a');
       mygram.push_term_symb('b');
       mygram.push_term_symb('c');
@@ -112,9 +116,9 @@ void input_grammar(void)
       mygram.push_rule('B', B);
       mygram.push_rule('C', C);
  
-      mygram.set_range(3, 8);
+      mygram.set_range(1, 5);
       mygram.set_start_symbol('A');
- */
+      mygram.set_direction('r');
       mygram.print_grammar();
       mygram.generate();
 
