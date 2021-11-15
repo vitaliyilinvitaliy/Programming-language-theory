@@ -24,14 +24,8 @@ class Example(tk.Frame):
     txt_alphabet = 0
     input_alphabet = 0
 
-    txt_stack_alphabet = 0
-    input_stack_alphabet = 0
-
     txt_start_state = 0
     input_start_state = 0
-
-    txt_stack_symbol = 0
-    input_stack_symbol = 0
 
     txt_end_state = 0
     input_end_state = 0
@@ -58,14 +52,8 @@ class Example(tk.Frame):
         self.input_alphabet = tk.Entry(self,width=40)
         self.txt_alphabet = tk.Label(self, text="Alphabet:", font=("Arial Bold", self.size_font))
 
-        self.input_stack_aplhabet = tk.Entry(self,width=40)
-        self.txt_stack_aplhabet = tk.Label(self, text="Stack alphabet:", font=("Arial Bold", self.size_font))
-
         self.input_start_state = tk.Entry(self,width=40)
         self.txt_start_state = tk.Label(self, text="Start state:", font=("Arial Bold", self.size_font))
-
-        self.input_stack_symbol = tk.Entry(self,width=40)
-        self.txt_stack_symbol = tk.Label(self, text="Stack symbol:", font=("Arial Bold", self.size_font))
 
         self.input_end_state = tk.Entry(self,width=40)
         self.txt_end_state = tk.Label(self, text="End state:", font=("Arial Bold", self.size_font))
@@ -95,29 +83,11 @@ class Example(tk.Frame):
 
         self.submit = self.input_alphabet
         self.submit.pack(side="top")
-
-        self.submit = self.txt_stack_aplhabet
-        self.submit.pack(side="top")
-
-        self.submit = self.input_stack_aplhabet
-        self.submit.pack(side="top")
         
         self.submit = self.txt_start_state
         self.submit.pack(side="top")
 
         self.submit = self.input_start_state
-        self.submit.pack(side="top")
-        
-        self.submit = self.txt_stack_symbol
-        self.submit.pack(side="top")
-
-        self.submit = self.input_stack_symbol
-        self.submit.pack(side="top")
-
-        self.submit = self.txt_stack_symbol
-        self.submit.pack(side="top")
-
-        self.submit = self.input_stack_symbol
         self.submit.pack(side="top")
 
         self.submit = self.txt_end_state
@@ -148,9 +118,7 @@ class Example(tk.Frame):
         input_state_str = self.input_state.get('1.0','end-1c')
         size_state_str = self.input_size_state.get()
         alphabet_str = self.input_alphabet.get()
-        stack_alphabet_str = self.input_stack_aplhabet.get()
         start_state_str = self.input_start_state.get()
-        stack_symbol_str = self.input_stack_symbol.get()
         end_state_str = self.input_end_state.get()
         chain_str = self.input_chain.get()
 
@@ -158,9 +126,7 @@ class Example(tk.Frame):
                           input_state_str, 
                           size_state_str, 
                           alphabet_str, 
-                          stack_alphabet_str, 
                           start_state_str, 
-                          stack_symbol_str, 
                           end_state_str,
                           chain_str
                         ])
